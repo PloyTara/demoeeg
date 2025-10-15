@@ -11,9 +11,9 @@ fs = 2000
 channel = data[:, 0]  # Channel 1
 
 # --- Sliding window parameters ---
-window_size = 1.0    # seconds (ละเอียดขึ้น)
+window_size = 1.0    # seconds
 step_size = 0.25     # seconds
-nperseg = 2048       # ความละเอียดความถี่สูงขึ้น
+nperseg = 2048       # resolutions
 
 samples_per_win = int(window_size * fs)
 samples_step = int(step_size * fs)
