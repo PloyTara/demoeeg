@@ -51,7 +51,7 @@ plt.tight_layout()
 plt.show()
 
 # --- Print best frequency for each channel ---
-print("\n📊 Highest Correlation per Channel:")
+print("\nHighest Correlation per Channel:")
 for label, corr_values in correlations.items():
     best_idx = np.argmax(corr_values)
     best_freq = test_freqs[best_idx]

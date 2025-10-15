@@ -67,7 +67,7 @@ for ch_name, ch_data in zip(["Channel 1", "Channel 2"], [channel_1, channel_2]):
     best_freq = max(results, key=results.get)
     best_power = results[best_freq]
     results_all[ch_name] = results
-    print(f"📡 {ch_name} responds best to {best_freq} Hz (Power = {best_power:.4e})")
+    print(f"{ch_name} responds best to {best_freq} Hz (Power = {best_power:.4e})")
 
 # --- Plot classification result ---
 plt.figure(figsize=(8, 4))
