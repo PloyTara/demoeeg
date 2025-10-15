@@ -9,29 +9,29 @@ mat_data = loadmat(mat_file_path)
 data = mat_data['data']
 fs = 2000  # Sampling rate
 
-# --- Select EEG channel (เช่นช่องที่ 1) ---
+# --- Select EEG channel ---
 channel = data[:, 0]
 
-# --- คำนวณ Power Spectral Density (PSD) ด้วย Welch ---
+# --- calculate Power Spectral Density (PSD) byย Welch method ---
 frequencies, psd = welch(channel, fs=fs, nperseg=2048)
 
 # --- SNR calculation ที่ 41 Hz ---
 target_freq = 41
 delta = 1  # window ±1 Hz
 
-# หาค่า index ที่ใกล้กับ 41 Hz
+# find index near 41 Hz
 idx_target = np.argmin(np.abs(frequencies - target_freq))
 signal_power = psd[idx_target]
 
-# Noise power: ค่าเฉลี่ยของรอบข้าง (ยกเว้นความถี่เป้าหมาย)
+# Noise power
 noise_mask = ((frequencies >= target_freq - delta) & 
               (frequencies <= target_freq + delta) & 
               (frequencies != frequencies[idx_target]))
 noise_power = np.mean(psd[noise_mask])
 
-# คำนวณ SNR (หน่วย dB)
+# SNR calculation (dB)
 snr_db = 10 * np.log10(signal_power / noise_power)
-print(f"🔍 SNR at {target_freq} Hz = {snr_db:.2f} dB")
+print(f"SNR at {target_freq} Hz = {snr_db:.2f} dB")
 
 # --- Plot PSD and SNR window ---
 plt.figure(figsize=(10, 5))

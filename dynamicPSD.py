@@ -44,7 +44,7 @@ psd_matrix = np.array(psd_matrix).T  # shape: [freqs x time]
 # --- Plot dynamic PSD ---
 plt.figure(figsize=(14, 6))
 plt.pcolormesh(time_points, freqs_plot, psd_matrix, shading='gouraud', cmap='hot')
-plt.axhline(y=target_freq, color='red', linestyle='--', label=f'{target_freq} Hz')  # 👈 เส้นแนวนอน 41 Hz
+plt.axhline(y=target_freq, color='red', linestyle='--', label=f'{target_freq} Hz')
 plt.title('Dynamic PSD (Sliding Window) with Target Frequency at 41 Hz')
 plt.xlabel('Time (s)')
 plt.ylabel('Frequency (Hz)')

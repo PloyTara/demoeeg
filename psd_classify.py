@@ -50,7 +50,7 @@ bands = {
     'Beta (13–30 Hz)': (13, 30),
     'Gamma (30–50 Hz)': (30, 50)
 }
-print("📊 Band Power Summary:")
+print("Band Power Summary:")
 for band_name, (fmin, fmax) in bands.items():
     p1 = band_power(frequencies, psd_1, fmin, fmax)
     p2 = band_power(frequencies, psd_2, fmin, fmax)
@@ -60,7 +60,7 @@ for band_name, (fmin, fmax) in bands.items():
 target_freqs = np.arange(41, 46, 0.2)
 bandwidth = 1.0
 
-print("\n🔍 Classifying Frequency Response (41–45 Hz):")
+print("\nClassifying Frequency Response (41–45 Hz):")
 results_all = {}
 for ch_name, ch_data in zip(["Channel 1", "Channel 2"], [channel_1, channel_2]):
     results = classify_by_power(ch_data, fs, target_freqs, bandwidth)

@@ -11,7 +11,7 @@ data = mat_data['data']
 fs = 2000  # Sampling rate
 
 # --- Select EEG channels ---
-eeg = data[:, [0, 1]]  # ใช้ channel 1 และ 2
+eeg = data[:, [0, 1]] 
 
 # --- สร้าง Reference Signals ---
 def generate_reference_signals(freq, n_samples, fs, n_harmonics=2):
@@ -32,7 +32,7 @@ def bandpass_filter(data, lowcut, highcut, fs, order=4):
 
 # --- FBCCA Parameters ---
 test_freqs = np.arange(41, 46)  # 41–45 Hz
-n_banks = 5  # จำนวน filter bank
+n_banks = 5  
 harmonics = 2
 n_samples = eeg.shape[0]
 
@@ -76,4 +76,4 @@ plt.show()
 
 # --- Best Frequency ---
 best_freq = test_freqs[np.argmax(fbcca_results)]
-print(f"🎯 Highest FBCCA score at: {best_freq} Hz (score = {max(fbcca_results):.4f})")
+print(f"Highest FBCCA score at: {best_freq} Hz (score = {max(fbcca_results):.4f})")

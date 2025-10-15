@@ -13,14 +13,14 @@ fs = 2000  # Sampling rate
 channel_1 = data[:, 0]
 
 # --- Define wavelet parameters ---
-freqs = np.linspace(1, 60, 100)  # ความถี่ที่ต้องการวิเคราะห์ (1–60 Hz)
-widths = (fs * 6) / (2 * np.pi * freqs)  # แปลงความถี่เป็น scale
+freqs = np.linspace(1, 60, 100)  
+widths = (fs * 6) / (2 * np.pi * freqs)  
 
 # --- Perform Continuous Wavelet Transform (CWT) ---
 cwt_result = cwt(channel_1, morlet2, widths, w=6)  # w=6 = standard Morlet wavelet
 
 # --- Plot time-frequency heatmap ---
-time = np.arange(channel_1.shape[0]) / fs  # เวลาในวินาที
+time = np.arange(channel_1.shape[0]) / fs 
 
 plt.figure(figsize=(14, 6))
 plt.pcolormesh(time, freqs, np.abs(cwt_result), shading='auto')
